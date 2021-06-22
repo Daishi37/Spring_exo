@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+<!--    <context:component-scan base-package="com.example.demo"/>-->
+<!--    <context:component-scan base-package="bean"/>-->
+    <context:component-scan base-package="models"/>
+
+<!--    <bean id="houseBean" class="models.House">-->
+<!--        <constructor-arg value="Euratechnologies, Lille 59000" type="java.lang.String"/>-->
+<!--        <constructor-arg value="30" type="int"/>-->
+<!--        <constructor-arg type="int" value="14"/>-->
+<!--        <constructor-arg value="Myrthille" type="java.lang.String"/>-->
+<!--    </bean>-->
+
+    <bean id="developerBean" class="models.Developer">
+        <constructor-arg value=""/>
+        <property name="name" value="Mickael"/>
+        <property name="nbSkillYear" value="4"/>
+    </bean>
+
+    <bean id="productManagerBean" class="models.Developer">
+        <constructor-arg value=""/>
+        <property name="name" value="Pierre"/>
+        <property name="nbSkillYear" value="15"/>
+    </bean>
+
+    <bean id="companyBean" class="models.Company">
+        <constructor-arg value=""/>
+        <property name="name" value="Boris company"/>
+        <property name="devJava" ref="developerBean"/>
+        <property name="projectManager" ref="productManagerBean"/>
+    </bean>
+
+    <bean id="serviceBean" class="models.Service">
+        <constructor-arg value="service singleton" type="java.lang.String"/>
+    </bean>
+
+    <bean id="service2Bean" class="models.Service" scope="prototype">
+        <constructor-arg value="service prototype" type="java.lang.String"/>
+    </bean>
+
+    <bean id="addressBean" class="models.Address">
+        <property name="address" value="TOURS"/>
+    </bean>
+
+    <bean id="customerBean" class="models.Customer"
+    autowire="byName">
+        <property name="name" value="POSTE"/>
+    </bean>
+
+    <bean id="kungFuBean" class="models.KungFu">
+        <constructor-arg value="Jujutsu" type="java.lang.String"/>
+    </bean>
+
+    <bean id="pandaBean" class="models.Panda" autowire="constructor">
+        <constructor-arg value="Pandi" type="java.lang.String"/>
+    </bean>
+
+    <bean id="personBean" class="bean.Person">
+        <constructor-arg value="Raphael" type="java.lang.String"/>
+        <constructor-arg value="LINARD" type="java.lang.String"/>
+        <constructor-arg value="raph@test.com" type="java.lang.String"/>
+    </bean>
+
+    <bean id="custom" class="bean.Custom">
+        <property name="action" value="Analyst"/>
+        <property name="type" value="1"/>
+    </bean>
+
+</beans>
+
+
+
